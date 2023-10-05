@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <title>Document</title>
+
+  <script>
+
+    if(!sessionStorage.getItem("username")){
+      window.location.href ="login.html"
+    }
+    // else{
+    //   window.location.href ="index.html"  
+    // }
+    
+    var OPTION_ARRAY = {
+      "First": [101, 102, 103, 104, 105],
+      "Second": [201, 202, 203, 204, 205],
+      "Third": [301, 302, 303, 304, 305],
+      "Fourth": [401, 402, 403, 404, 405]
+    };
+
+    function cleanSelect2() {
+      var e1 = document.getElementById('shop');
+      // e1.length = 0;
+      e1.innerText = null;
+    }
+
+    function fillSelect2(value) {
+      // console.log(value);
+      var values = OPTION_ARRAY[value];
+      var e2 = document.getElementById('shop');
+      setDropDownData(e2, values);
+      console.log(e2.value);
+      localStorage.setItem("passvalue",e2.value)
+    }
+    
+  </script>
+</head>
+
+  <!-- Navbar Code -->
+  <div class=" bg-blue-500 p-4 fixed top-0 w-full">
+    <div class="max-w-[1240px] flex items-center justify-between mx-auto">
+        <div class="text-3xl font-bold text-white flex gap-2 items-center">
+            <FaListAlt class="inline" />Society Maintenance
+        </div>
+
+        <ul class="hidden md:flex text-white gap-10">
+            <li>Sign in</li>
+            <li id="logout" onclick="logout()" onmouseover="" style="cursor: pointer">LogOut</li>
+          
+        </ul>
+
+    </div>
+</div>
+
+<!-- ------------------------------------------------------------------------- -->
+
+<body class="">
+  <div class="flex justify-center items-center h-screen bg-blue-100">
+
+    <div class="w-96 p-6 shadow-2xl bg-white rounded-lg text-black">
+      <h1 class="text-3xl  text-center font-semibold">Select Shop</h1>
+      <hr class="mt-3" />
+      <div class="mt-5">
+        <form action="" id="formid">
+        <label class="block text-base mb-2">Select Floor</label>
+        <select class="border focus:border-gray-500 w-full text-base px-2 py-1" id="floor">
+        </select>
+      </div>
+      <div class="mt-5">
+        <label class="block text-base mb-2">Select Shop No</label>
+        <select  class="border focus:border-gray-500 w-full text-base px-2 py-1" id="shop">
+          
+        </select>
+      </form>
+      </div>
+
+      <div class="mt-8 flex justify-center items-center">
+        <button onclick="nav()" 
+            class="border-2 border-green-500 bg-green-500 rounded-md text-white hover:bg-transparent hover:text-green-700 py-1 w-[48%] ">
+          Go</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+
+function logout(){
+ 
+  // document.getElementById("logout").addEventListener("click", function () {
+    
+    sessionStorage.removeItem("username");
+        window.location.href ="login.html"
+    // });
+}
+    function nav(){
+      window.location.href = "shop_details.html"
+    }
+
+    function changeFirstDropDown() 
+    {                     
+        cleanSelect2();
+        fillSelect2(this.value);
+    }
+
+        var e1 = document.getElementById("floor");
+        var values = Object.keys(OPTION_ARRAY);
+
+        e1.addEventListener("change", changeFirstDropDown, false);
+
+        var e2 = document.getElementById('shop');
+
+        setDropDownData(e1,values);
+        fillSelect2("First");
+        function setDropDownData(element,values)
+        {    
+            for (let index = 0; index < values.length; index++) {
+                var option= document.createElement("option");                
+                option.value=  values[index];
+                option.text = values[index];
+                element.appendChild(option);
+            }
+        }
+        e2.addEventListener("change", function () {
+      let selectedShop = e2.value;
+      console.log("Selected Shop:", selectedShop);
+      localStorage.setItem("passvalue",selectedShop)
+    });
+
+  </script>
+</body>
+</html>
+

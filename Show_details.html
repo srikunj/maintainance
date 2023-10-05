@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        
+    if(!sessionStorage.getItem("username")){
+      window.location.href ="login.html"
+    }
+
+    function logout(){
+ 
+ // document.getElementById("logout").addEventListener("click", function () {
+   
+   sessionStorage.removeItem("username");
+       window.location.href ="login.html"
+   // });
+}
+    </script>
+</head>
+<body>
+    
+      <!-- Navbar Code -->
+      <div class=" bg-blue-500 p-4 fixed top-0 w-full">
+        <div class="max-w-[1240px] flex items-center justify-between mx-auto">
+            <div class="text-3xl font-bold text-white flex gap-2 items-center">
+                <FaListAlt class="inline" />Society Maintenance
+            </div>
+
+            <ul class="hidden md:flex text-white gap-10">
+                <li>Sign in</li> 
+               <li id="logout" onclick="logout()" onmouseover="" style="cursor: pointer">Log Out</li>
+              
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- -------------------------------------------------------- -->
+</body>
+</html>

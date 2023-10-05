@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link rel="stylesheet" href="index.css"> -->
+    <title>Document</title>
+
+    <script>
+        
+
+        if(!sessionStorage.getItem("username")){
+      window.location.href ="login.html"
+    }
+
+        let receivedval = localStorage.getItem("passvalue");
+        document.addEventListener("DOMContentLoaded", function () {
+            // temp=receivedval;
+            if (receivedval) {
+                document.getElementById('shop_no').value = receivedval;
+                let temp;
+                fetch('http://localhost:3000/ShopData?Shop_no='+ receivedval)
+                .then(res => res.json())
+                .then((output) => {
+                        output.map((val) => {
+                            temp = val.Shop_no;
+                            document.getElementById("id").value = val.id;
+                            document.getElementById("owner").value = val.Owner;
+                            document.getElementById("mobile_no").value = val.Mobile_no;
+                            document.getElementById("email").value = val.Email;
+                        })
+                        if (temp == receivedval) {
+                            document.getElementById("add_data").style.display = "none";
+                            document.getElementById("upd_data").style.display = "block";
+                            document.getElementById("show_data").disabled= false;
+                        }
+                    })
+            } else {
+                document.getElementById("shop_no").value = "";
+            }
+        });
+
+            // receivedval = localStorage.getItem("passvalue");
+
+         
+
+    </script>
+
+</head>
+
+<body class="">
+
+      <!-- Navbar Code -->
+      <div class=" bg-blue-500 p-4 fixed top-0 w-full">
+        <div class="max-w-[1240px] flex items-center justify-between mx-auto">
+            <div class="text-3xl font-bold text-white flex gap-2 items-center">
+                <FaListAlt class="inline" />Society Maintenance
+            </div>
+
+            <ul class="hidden md:flex text-white gap-10">
+                <li>Sign in</li> 
+               <li id="logout" onclick="logout()" onmouseover="" style="cursor: pointer">Log Out</li>
+              
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- -------------------------------------------------------- -->
+    <div class="flex justify-center items-center h-screen bg-blue-100">
+
+        <div class="w-[500px] p-6 shadow-2xl bg-white rounded-lg text-black">
+            <h1 class="text-3xl  text-center font-semibold">Shop Details</h1>
+            <hr class="mt-3" />
+
+            <div class="mt-6 flex justify-between ">
+                <input type="hidden" id="id">
+                <label class=" text-base mb-2">Shop No :</label>
+                <input type="text" id="shop_no" name="shop_no" class="border focus:border-gray-500 w-80 text-base "
+                    placeholder="Shop No..." autoComplete="off" />
+            </div>
+
+            <div class="mt-3 flex justify-between ">
+                <label class=" text-base mb-2">Owner :</label>
+                <input type="text" id="owner" name="owner" class="border focus:border-gray-500 w-80 text-base "
+                    placeholder="Owner Name..." autoComplete="off" />
+            </div>
+
+            <div class="mt-3 flex justify-between ">
+                <label class=" text-base mb-2">Mobile No :</label>
+                <input type="text" id="mobile_no" name="mobile_no" class="border focus:border-gray-500 w-80 text-base "
+                    placeholder="Mobile No..." autoComplete="off" />
+            </div>
+
+            <div class="mt-3 flex justify-between ">
+                <label class=" text-base mb-2">Email :</label>
+                <input type="text" id="email" name="email" class="border focus:border-gray-500 w-80 text-base "
+                    placeholder="Email..." autoComplete="off" />
+            </div>
+
+            <!-- <div class="mt-3 flex justify-between ">
+                <label class=" text-base mb-2">Due Payment :</label>
+                <input type="text" id="due_payment" name="due_payment"
+                    class="border focus:border-gray-500 w-80 text-base " placeholder="Due Payment..."
+                    autoComplete="off" />
+            </div>
+
+            <div class="mt-3 flex justify-between">
+                <label class="text-base mb-2">Last Payment :</label>
+                <input type="text" id="last_payment" name="last_payment"
+                    class=" border focus:border-gray-500 text-base w-36" placeholder="Amount..." autoComplete="off" />
+                <input type='date' name='date' id='date' />
+            </div> -->
+
+            <div class="mt-8 flex gap-[2%]">
+                <button id="show_data" onclick="Show_data()" type="button" disabled class="disabled:opacity-50 border-2 border-blue-500 bg-blue-500 rounded-md text-white hover:bg-transparent hover:text-blue-700 py-1 w-[48%]  ">Show Details</button>
+                <button id="add_data" onclick="add_data()" type="button" class="border-2 border-green-500 bg-green-500 rounded-md text-white hover:bg-transparent hover:text-green-700 py-1 w-[48%] ">Add</button>
+                <button id="upd_data" onclick="update_data()" type="button" class="hidden border-2 border-green-500 bg-green-500 rounded-md text-white hover:bg-transparent hover:text-green-700 py-1 w-[48%] ">Update</button>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+function logout(){
+ 
+ // document.getElementById("logout").addEventListener("click", function () {
+   
+   sessionStorage.removeItem("username");
+       window.location.href ="login.html"
+   // });
+}
+      
+
+function update_data() {
+            var id = parseInt(document.getElementById("id").value);
+            var shop_no = parseInt(document.getElementById("shop_no").value);
+            var owner = document.getElementById("owner").value;
+            var mobile_no = parseInt(document.getElementById("mobile_no").value);
+            var email = document.getElementById("email").value;
+            var data = {
+                id:id , Shop_no: receivedval, Owner: owner, Mobile_no: mobile_no, Email: email
+            };
+
+            fetch("http://localhost:3000/ShopData/" + id, {
+                method: "put",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then((res) => res.json())
+            
+        }
+        function add_data() {
+        
+            var shop_no = parseInt(document.getElementById("shop_no").value);
+            var owner = document.getElementById("owner").value;
+            var mobile_no = parseInt(document.getElementById("mobile_no").value);
+            var email = document.getElementById("email").value;
+            // var due_payment = parseInt(document.getElementById("due_payment").value);
+            // var last_payment = parseInt(document.getElementById("last_payment").value);
+            // var date = document.getElementById("date").value;
+
+            var data = {
+                // Shop_no: shop_no, Owner: owner, Mobile_no: mobile_no, Email: email, Due_payment: due_payment, Last_payment: last_payment, Date: date
+                Shop_no: shop_no, Owner: owner, Mobile_no: mobile_no, Email: email
+            };
+
+
+            fetch("http://localhost:3000/ShopData", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then((res) => res.json())
+
+        }
+
+        
+        function Show_data(){
+        window.location.href = "Show_details.html"
+        }
+
+    </script>
+</body>
+
+</html>

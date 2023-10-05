@@ -1,0 +1,24 @@
+{
+  "ShopData": [
+    {
+      "Shop_no": 104,
+      "Owner": "utul",
+      "Mobile_no": 5282976341,
+      "Email": "atul@gmail.com",
+      "id": 1
+    },
+    {
+      "Shop_no": 303,
+      "Owner": "shrikunj",
+      "Mobile_no": 6352827510,
+      "Email": "shrikunjrawal942@gmail.com",
+      "id": 2
+    }
+  ],
+  "Person": [
+    {
+      "Username": "abc",
+      "Password": 123
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+/* border-2 border-green-500 bg-green-500 rounded-md text-white 
+hover:bg-transparent hover:text-green-700 py-1 w-[48%] */
+
+.btngo{
+    border: 2px;
+    background-color: green;
+    border-radius: 20px;
+    color: white;
+    height: 40px;
+    width: 100px;
+}
+
+/* border-2 border-blue-500 bg-blue-500 rounded-md 
+text-white hover:bg-transparent hover:text-blue-700 py-1 w-[48%]  */
+
+.btnshop{
+    border: 2px;
+    background-color: rgb(66, 158, 245);
+    border-radius: 20px;
+    color: white;
+    height:40px;
+    width:150px;
+}
