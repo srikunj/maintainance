@@ -12,8 +12,8 @@
         
 
         if(!sessionStorage.getItem("username")){
-      window.location.href ="login.html"
-    }
+            window.location.href ="login.html"
+        }
 
         let receivedval = localStorage.getItem("passvalue");
         document.addEventListener("DOMContentLoaded", function () {
@@ -41,11 +41,7 @@
                 document.getElementById("shop_no").value = "";
             }
         });
-
             // receivedval = localStorage.getItem("passvalue");
-
-         
-
     </script>
 
 </head>
@@ -60,7 +56,7 @@
             </div>
 
             <ul class="hidden md:flex text-white gap-10">
-                <li>Sign in</li> 
+                <!-- <li>Sign in</li>  -->
                <li id="logout" onclick="logout()" onmouseover="" style="cursor: pointer">Log Out</li>
               
             </ul>
@@ -118,7 +114,6 @@
                 <button id="show_data" onclick="Show_data()" type="button" disabled class="disabled:opacity-50 border-2 border-blue-500 bg-blue-500 rounded-md text-white hover:bg-transparent hover:text-blue-700 py-1 w-[48%]  ">Show Details</button>
                 <button id="add_data" onclick="add_data()" type="button" class="border-2 border-green-500 bg-green-500 rounded-md text-white hover:bg-transparent hover:text-green-700 py-1 w-[48%] ">Add</button>
                 <button id="upd_data" onclick="update_data()" type="button" class="hidden border-2 border-green-500 bg-green-500 rounded-md text-white hover:bg-transparent hover:text-green-700 py-1 w-[48%] ">Update</button>
-                
             </div>
         </div>
     </div>
@@ -153,10 +148,9 @@ function update_data() {
                 body: JSON.stringify(data)
             })
             .then((res) => res.json())
-            
         }
+
         function add_data() {
-        
             var shop_no = parseInt(document.getElementById("shop_no").value);
             var owner = document.getElementById("owner").value;
             var mobile_no = parseInt(document.getElementById("mobile_no").value);
@@ -181,7 +175,6 @@ function update_data() {
                 .then((res) => res.json())
 
         }
-
         
         function Show_data(){
         window.location.href = "Show_details.html"

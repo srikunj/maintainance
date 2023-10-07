@@ -1,4 +1,124 @@
 {
+  "maintenance": [
+    {
+      "year": 2022,
+      "data": [
+        {
+          "shop": "101",
+          "amount": 1000,
+          "transactions": [
+            {
+              "receipt_id": "101",
+              "transaction_id":"",
+              "payment_type": "cash",
+              "pay_date": "06-01-2022",
+              "paid_amount": 1000
+            },
+            {
+              "receipt_id": "102",
+              "transaction_id":"911435902206",
+              "payment_type": "gpay",
+              "pay_date": "03-05-2022",
+              "paid_amount": 2000
+            },
+            {
+              "receipt_id": "104",
+              "transaction_id":"911435902404",
+              "payment_type": "gpay",
+              "pay_date": "06-05-2022",
+              "paid_amount": 2000
+            },
+            {
+              "receipt_id": "106",
+              "transaction_id":"991435902002",
+              "payment_type": "gpay",
+              "pay_date": "06-10-2022",
+              "paid_amount": 5000
+            },
+            {
+              "receipt_id": "108",
+              "transaction_id":"",
+              "payment_type": "cash",
+              "pay_date": "06-12-2022",
+              "paid_amount": 2000
+            }
+          ]
+        },
+        {
+          "shop": "201",
+          "amount": 1000,
+          "transactions": [
+            {
+              "receipt_id": "103",
+              "transaction_id":"",
+              "payment_type": "cash",
+              "pay_date": "06-01-2022",
+              "paid_amount": 1000
+            },
+            {
+              "receipt_id": "105",
+              "transaction_id":"981435922034",
+              "payment_type": "gpay",
+              "pay_date": "06-02-2022",
+              "paid_amount": 1000
+            },
+            {
+              "receipt_id": "107",
+              "transaction_id":"981400702316",
+              "payment_type": "gpay",
+              "pay_date": "06-03-2022",
+              "paid_amount": 1000
+            },
+            {
+              "receipt_id": "109",
+              "transaction_id":"981123456316",
+              "payment_type": "gpay",
+              "pay_date": "06-04-2022",
+              "paid_amount": 6000
+            },
+            {
+              "receipt_id": "110",
+              "transaction_id":"989624577316",
+              "payment_type": "gpay",
+              "pay_date": "06-10-2022",
+              "paid_amount": 3000
+            }
+          ]
+        } 
+      ]
+    },
+    {
+      "year": 2023,
+      "data": [
+        {
+          "shop": "101",
+          "amount": 1000,
+          "transactions": [
+            {
+              "receipt_id": "111",
+              "transaction_id":"123456902316",
+              "payment_type": "gpay",
+              "pay_date": "06-01-2023",
+              "paid_amount": 1000
+            }
+          ]
+        },
+        {
+          "shop": "201",
+          "amount": 1000,
+          "transactions": [
+            {
+              "receipt_id": "112",
+              "transaction_id":"981435159012",
+              "payment_type": "gpay",
+              "pay_date": "06-01-2023",
+              "paid_amount": 1000
+            }
+          ]
+        } 
+      ]
+    }
+  ],
   "ShopData": [
     {
       "Shop_no": 104,
@@ -13,6 +133,34 @@
       "Mobile_no": 6352827510,
       "Email": "shrikunjrawal942@gmail.com",
       "id": 2
+    },
+    {
+      "Shop_no": 302,
+      "Owner": "tthh",
+      "Mobile_no": 5253,
+      "Email": "aca@gmail.com",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "Shop_no": "304",
+      "Owner": "tiger",
+      "Mobile_no": 2328,
+      "Email": "tiger@gmail.com"
+    },
+    {
+      "id": 5,
+      "Shop_no": "203",
+      "Owner": "ppp",
+      "Mobile_no": 2356,
+      "Email": "dcaa"
+    },
+    {
+      "Shop_no": 101,
+      "Owner": "kartik",
+      "Mobile_no": 8945,
+      "Email": "kmkac@gmail.com",
+      "id": 6
     }
   ],
   "Person": [
@@ -22,3 +170,4 @@
     }
   ]
 }
+

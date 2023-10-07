@@ -1,44 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        
-    if(!sessionStorage.getItem("username")){
-      window.location.href ="login.html"
-    }
 
-    function logout(){
- 
- // document.getElementById("logout").addEventListener("click", function () {
-   
-   sessionStorage.removeItem("username");
-       window.location.href ="login.html"
-   // });
-}
+
+        if (!sessionStorage.getItem("username")) {
+            window.location.href = "login.html"
+        }
+
+        function logout() {
+            // document.getElementById("logout").addEventListener("click", function () {
+            sessionStorage.removeItem("username");
+            window.location.href = "login.html"
+            // });
+        }
+
+        // -----------------------------------------------------------------------------------------
+
+        // // function display(data) {
+        // const year = document.getElementById("year").value;
+        // let receivedval = localStorage.getItem("passvalue");
+        // let temp;
+        // fetch("http://localhost:3000/maintenance?year=" + year)
+        //     .then((res) => res.json())
+        //     .then((output) => {
+        //         console.log(output)
+        //         var temp = output;
+
+        //     })
+
     </script>
 </head>
+<style>
+    .btn_tot {
+        border: 2px solid black;
+    }
+</style>
+
 <body>
-    
-      <!-- Navbar Code -->
-      <div class=" bg-blue-500 p-4 fixed top-0 w-full">
+
+    <!-- Navbar Code -->
+    <div class=" bg-blue-500 p-4 fixed top-0 w-full">
         <div class="max-w-[1240px] flex items-center justify-between mx-auto">
             <div class="text-3xl font-bold text-white flex gap-2 items-center">
                 <FaListAlt class="inline" />Society Maintenance
             </div>
 
             <ul class="hidden md:flex text-white gap-10">
-                <li>Sign in</li> 
-               <li id="logout" onclick="logout()" onmouseover="" style="cursor: pointer">Log Out</li>
-              
+                <!-- <li>Sign in</li>  -->
+                <li id="logout" onclick="logout()" onmouseover="" style="cursor: pointer">Log Out</li>
             </ul>
 
         </div>
     </div>
 
     <!-- -------------------------------------------------------- -->
+
+
+    <div class="mt-20" id="main">
+
+        <div class=" my-5">
+            <h1 id="selectedyear" class="text-center text-3xl font-bold"> Maintenance Year Of 2023</h1>
+            <div class="w-64 mx-auto flex flex-col items-center">
+                <label for="year" class="text-gray-600 text-sm text-bold mb-2 mt-2">Select a Year :</label>
+                <select id="year" name="year"
+                    class="block w-28 border border-gray-300 rounded-md focus:ring focus:ring-indigo-300 focus:border-indigo-300">
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2021">2020</option>
+                    <!-- Add more years as needed -->
+                </select>
+            </div>
+
+        </div>
+        <center>
+            <div id="table">
+                <table class="w-[1000px] border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="bg-gray-200 border border-gray-400 px-4 py-2">Sr No</th>
+                            <th class="bg-gray-200 border border-gray-400 px-4 py-2">Month</th>
+                            <th class="bg-gray-200 border border-gray-400 px-4 py-2">Payment Type</th>
+                            <th class="bg-gray-200 border border-gray-400 px-4 py-2">Date of Payment</th>
+                            <th class="bg-gray-200 border border-gray-400 px-4 py-2">Paid Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="one" class="border border-gray-400 px-4 py-2">1</td>
+                            <td id="jan" class="border border-gray-400 px-4 py-2">January</td>
+                            <td id="paytype01" class="border border-gray-400 px-4 py-2"></td>
+                            <td id="paydate01" class="border border-gray-400 px-4 py-2"></td>
+                            <td id="payamt01" class="border border-gray-400 px-4 py-2"></td>
+                        </tr>
+                        <tr>
+                            <td id="two" class="bg-gray-200 border border-gray-400 px-4 py-2">2</td>
+                            <td id="feb" class="bg-gray-200 border border-gray-400 px-4 py-2">February</td>
+                            <td id="paytype02" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                            <td id="paydate02" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                            <td id="payamt02" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                        </tr>
+                        <tr>
+                            <td id="three" class="border border-gray-400 px-4 py-2">3</td>
+                            <td id="mar" class="border border-gray-400 px-4 py-2">March</td>
+                            <td id="paytype3" class="border border-gray-400 px-4 py-2"></td>
+                            <td id="paydate3" class="border border-gray-400 px-4 py-2"></td>
+                            <td id="payamt3" class="border border-gray-400 px-4 py-2"></td>
+                        </tr>
+                        <tr>
+                            <td id="four" class="bg-gray-200 border border-gray-400 px-4 py-2">4</td>
+                            <td id="apr" class="bg-gray-200 border border-gray-400 px-4 py-2">April</td>
+                            <td id="paytype04" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                            <td id="paydate04" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                            <td id="payamt04" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                        </tr>
+                        <tr>
+                            <td id="five" class="border border-gray-400 px-4 py-2">5</td>
+                            <td id="may" class="border border-gray-400 px-4 py-2">May</td>
+                            <td id="paytype05" class="border border-gray-400 px-4 py-2"></td>
+                            <td id="paydate05" class="border border-gray-400 px-4 py-2"></td>
+                            <td id="payamt05" class="border border-gray-400 px-4 py-2"></td>
+                        </tr>
+                        <tr>
+                            <td id="six" class="bg-gray-200 border border-gray-400 px-4 py-2">6</td>
+                            <td id="jun" class="bg-gray-200 border border-gray-400 px-4 py-2">June</td>
+                            <td id="paytype6" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                            <td id="paydate6" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                            <td id="payamt6" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                        </tr>
+                        <tr>
+                            <td id="sev" class="border border-gray-400 px-4 py-2">7</td>
+                            <td id="jul" class="border border-gray-400 px-4 py-2">July</td>
+                            <td id="paytype07" class="border border-gray-400 px-4 py-2"></td>
+                            <td id="paydate07" class="border border-gray-400 px-4 py-2"></td>
+                            <td id="payamt07" class="border border-gray-400 px-4 py-2"></td>
+                        </tr>
+                        <tr id="R8">
+                            <td id="eight" class="bg-gray-200 border border-gray-400 px-4 py-2">8</td>
+                            <td id="aug" class="bg-gray-200 border border-gray-400 px-4 py-2">August</td>
+                            <td id="paytype08" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                            <td id="paydate08" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                            <td id="payamt08" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                        </tr>
+                        <tr id="R9">
+                            <td id="nine" class="border border-gray-400 px-4 py-2">9</td>
+                            <td id="sep" class="border border-gray-400 px-4 py-2">September</td>
+                            <td id="paytype09" class="border border-gray-400 px-4 py-2"></td>
+                            <td id="paydate09" class="border border-gray-400 px-4 py-2"></td>
+                            <td id="payamt09" class="border border-gray-400 px-4 py-2"></td>
+                        </tr>
+                        <tr id="R10">
+                            <td id="ten" class="bg-gray-200 border border-gray-400 px-4 py-2">10</td>
+                            <td id="oct" class="bg-gray-200 border border-gray-400 px-4 py-2">October</td>
+                            <td id="paytype10" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                            <td id="paydate10" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                            <td id="payamt10" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                        </tr>
+                        <tr id="R11">
+                            <td id="ele" class="border border-gray-400 px-4 py-2">11</td>
+                            <td id="nov" class="border border-gray-400 px-4 py-2">November</td>
+                            <td id="paytype11" class="border border-gray-400 px-4 py-2"></td>
+                            <td id="paydate11" class="border border-gray-400 px-4 py-2"></td>
+                            <td id="payamt11" class="border border-gray-400 px-4 py-2"></td>
+                        </tr>
+                        <tr id="R12">
+                            <td id="tew" class="bg-gray-200 border border-gray-400 px-4 py-2">12</td>
+                            <td id="dec" class="bg-gray-200 border border-gray-400 px-4 py-2">December</td>
+                            <td id="paytype12" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                            <td id="paydate12" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                            <td id="payamt12" class="bg-gray-200 border border-gray-400 px-4 py-2"></td>
+                        </tr>
+                        <!--  -->
+                    </tbody>
+                </table>
+            </div>
+        </center>
+        <!-- my-10 space-x-2 ml-48 -->
+        <div class="flex gap-4 my-5 ml-56 " id="textdata">
+            <div class="">
+                <label class=" text-base " for="">Total Paid :</label>
+                <input class="border border-gray-400 focus:border-gray-500  text-base" type="text">
+                <label class=" text-base " for="">Amount to Pay :</label>
+                <input class="mr-2 border  border-gray-400  focus:border-gray-500  text-base" type="text">
+            </div>
+            <div class="">
+                <label class=" text-base" for="">Advance Payment :</label>
+                <input class="border border-gray-400 focus:border-green text-base" type="text"><br>
+                <label class=" text-base mt-2" for="">Due Payment :</label>
+                <input class="border border-gray-400 focus:border-red ml-8 mt-2 text-base" type="text">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //  var temp
+        let receivedval2 = localStorage.getItem("passvalue");
+        console.log(receivedval2);
+
+
+
+        // function display(data) {
+        const year = document.getElementById("year");
+        let receivedval = localStorage.getItem("passvalue");
+        let temp;
+
+        fetch("http://localhost:3000/maintenance?year=" + year.value)
+            .then((res) => res.json())
+            .then((output) => {
+                console.log(output)
+                var z = output[0].data
+                // console.log(z);
+                for (let i = 0; i < z.length; i++) {
+                    if (z[i].shop == receivedval) {
+
+                        var m = z[i].transactions[0].pay_date[3] + z[i].transactions[0].pay_date[4];
+                        console.log(m);
+                        if (parseInt(m) < 10) {
+                            document.getElementById("paytype" + m).innerHTML = output[0].data[0].transactions[0].payment_type
+                            document.getElementById("paydate" + m).innerHTML = output[0].data[0].transactions[0].pay_date
+                            document.getElementById("payamt" + m).innerHTML = output[0].data[0].transactions[0].paid_amount
+                        }
+                    }
+                }
+                // console.log(z[2]);
+            })
+
+        year.addEventListener("change", function () {
+            fetch("http://localhost:3000/maintenance?year=" + year.value)
+                .then((res) => res.json())
+                .then((output) => {
+                    console.log(output)
+                    temp = output;
+
+                    // console.log(m);
+                    var z = output[0].data
+                    console.log(z);
+                    for (let i = 0; i < z.length; i++) {
+                        // var m = z[i].transactions[0].pay_date[3] + output[0].data[0].transactions[0].pay_date[4];
+                        if (z[i].shop == receivedval) {
+
+                            // console.log(z[i].shop);
+                            var m = z[i]
+                            // console.log(m);
+                            for (let j = 0; j < m.transactions.length; j++) {
+                                let date = m.transactions[j].pay_date[3] + m.transactions[j].pay_date[4];
+
+                                // console.log(parseInt(date));
+                                document.getElementById("paytype" + date).innerHTML = m.transactions[j].payment_type;
+                                document.getElementById("paydate" + date).innerHTML = m.transactions[j].pay_date;
+                                document.getElementById("payamt" + date).innerHTML = m.transactions[j].paid_amount;
+                                document.getElementById("paytype" + date).style.backgroundColor = "green"
+                                document.getElementById("paydate" + date).style.backgroundColor = "green"
+                                document.getElementById("payamt" + date).style.backgroundColor = "green"
+                                document.getElementById("payamt" + date).style.color = "white"
+                                document.getElementById("paytype" + date).style.color = "white"
+                                document.getElementById("paydate" + date).style.color = "white"
+                                
+                            }
+                        }
+                    }
+                })
+        })
+        // console.log(temp);
+    </script>
 </body>
+
 </html>

@@ -9,21 +9,28 @@
   <title>Document</title>
 
   <script>
+  // Function to reload the page
+  // function reloadPage() {
+  //           window.location.reload();
+  //       }
+
+  //       // Add a popstate event listener to detect back and forward button clicks
+  //       window.addEventListener('popstate', function(event) {
+  //           // Reload the page when the user navigates back or forward
+  //           reloadPage();
+  //       });
 
     if(!sessionStorage.getItem("username")){
       window.location.href ="login.html"
     }
-    // else{
-    //   window.location.href ="index.html"  
-    // }
-    
+
     var OPTION_ARRAY = {
       "First": [101, 102, 103, 104, 105],
       "Second": [201, 202, 203, 204, 205],
       "Third": [301, 302, 303, 304, 305],
       "Fourth": [401, 402, 403, 404, 405]
     };
-
+    
     function cleanSelect2() {
       var e1 = document.getElementById('shop');
       // e1.length = 0;
@@ -50,9 +57,8 @@
         </div>
 
         <ul class="hidden md:flex text-white gap-10">
-            <li>Sign in</li>
+            <li></li>
             <li id="logout" onclick="logout()" onmouseover="" style="cursor: pointer">LogOut</li>
-          
         </ul>
 
     </div>
@@ -81,25 +87,21 @@
       </div>
 
       <div class="mt-8 flex justify-center items-center">
-        <button onclick="nav()" 
+        <button onclick="Go()" 
             class="border-2 border-green-500 bg-green-500 rounded-md text-white hover:bg-transparent hover:text-green-700 py-1 w-[48%] ">
           Go</button>
       </div>
     </div>
   </div>
-
   <script>
 
 
-function logout(){
- 
-  // document.getElementById("logout").addEventListener("click", function () {
-    
+function logout(){  
     sessionStorage.removeItem("username");
         window.location.href ="login.html"
-    // });
 }
-    function nav(){
+
+    function Go(){
       window.location.href = "shop_details.html"
     }
 
@@ -111,13 +113,14 @@ function logout(){
 
         var e1 = document.getElementById("floor");
         var values = Object.keys(OPTION_ARRAY);
-
+  
         e1.addEventListener("change", changeFirstDropDown, false);
-
+        
         var e2 = document.getElementById('shop');
 
         setDropDownData(e1,values);
         fillSelect2("First");
+
         function setDropDownData(element,values)
         {    
             for (let index = 0; index < values.length; index++) {
@@ -127,7 +130,8 @@ function logout(){
                 element.appendChild(option);
             }
         }
-        e2.addEventListener("change", function () {
+
+      e2.addEventListener("change", function () {
       let selectedShop = e2.value;
       console.log("Selected Shop:", selectedShop);
       localStorage.setItem("passvalue",selectedShop)

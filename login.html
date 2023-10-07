@@ -18,7 +18,6 @@
             <ul class="hidden md:flex text-white gap-10">
                 <!-- <li>Sign in</li> -->
                 <!-- <li>Log Out</li> -->
-              
             </ul>
 
         </div>
@@ -38,9 +37,11 @@
                 <label class="block text-base mb-2">Password</label>
                 <input type="password" id="password" name="password" class="border focus:border-gray-500 w-full text-base px-2 py-1" placeholder="Enter Password..." autoComplete="off" required />
             </div>
+
             <!-- <div class="mt-4 text-right text-blue-600">
                 <p>Forgot Password?</p>
             </div> -->
+
             <div class="mt-5 gap-[2%] flex">
                 <button onclick="signin()" type="submit" class="border-2 border-blue-500 bg-blue-500 rounded-md text-white hover:bg-transparent hover:text-blue-700 py-1 w-[48%] ">Sign In</button>
                 <button class="border-2 border-red-500 bg-red-500 rounded-md text-white hover:bg-transparent hover:text-red-700 py-1 w-[48%] ">Reset</button>
@@ -54,6 +55,10 @@
     <p id="message"></p>
 
     <script>
+
+        if(sessionStorage.getItem("username")){
+                window.location.href ="index.html"
+        }
 
         function signin(){
         document.getElementById("loginForm").addEventListener("submit", function (e) {
@@ -80,7 +85,6 @@
                     } else {
                         // document.getElementById("message").innerHTML = "Invalid username or password.";
                         alert("Invalid username or password.")
-
                     }
                 })
                 .catch(error => {
@@ -88,6 +92,8 @@
                 });
         });
     }
+
+
     </script>
 </body>
 
